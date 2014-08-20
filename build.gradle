@@ -1,0 +1,96 @@
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'war'
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+
+    dependencies {
+        classpath 'org.akhikhl.gretty:gretty:+'
+    }
+}
+
+apply plugin: 'org.akhikhl.gretty'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+
+    testCompile 'junit:junit:4.9'
+
+    providedCompile 'com.google.gwt:gwt-dev:2.2.0'
+    providedCompile 'com.google.gwt:gwt-user:2.2.0'
+    providedCompile 'javax.servlet:servlet-api:2.4'
+
+    runtime 'com.google.gwt:gwt-servlet:2.2.0'
+
+    compile 'com.extjs:gxt:2.3.1-gwt22'
+}
+
+task compileGwt (dependsOn: classes, type: JavaExec) {
+
+    // prevent gwtc from running
+    // if no gwt module source is changed
+    inputs.source sourceSets.main.java.srcDirs
+	inputs.dir sourceSets.main.output.resourcesDir
+
+    main = 'com.google.gwt.dev.Compiler'
+    jvmArgs = ['-Xmx512M', '-Xss16M']
+
+    classpath {
+        [
+            sourceSets.main.java.srcDirs,           // Java source
+            sourceSets.main.output.resourcesDir,    // Generated resources
+            sourceSets.main.output.classesDir,      // Generated classes
+            sourceSets.main.compileClasspath,       // Deps
+        ]   
+    }
+     
+    args = [
+        'home.justin.RSSReader.RSSReader',
+        //'-war', "${buildDir}/war",
+        '-logLevel', 'INFO',
+        '-localWorkers', '2',
+        //'-extra', extraDir,
+        // '-draftCompile' // Speeds up compile with 25%
+    ]
+
+}
+
+war.dependsOn compileGwt
+war {
+    webAppDirName = 'war'
+    baseName = 'rssreader'
+    from 'war'
+    exclude 'WEB-INF/lib/*.jar'
+    exclude 'WEB-INF/classes/**/*'
+
+    compileJava {
+        options.encoding = "UTF-8"
+        sourceCompatibility = "1.6"
+    }
+
+}
+
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.0'
+}
+
+gretty {
+    httpPort = 8080
+    // loggingLevel = 'DEBUG'
+    contextPath = '/rssreader'
+}
+
+gradle.taskGraph.afterTask { task ->
+    if (task.name == 'compileJava' && task.didWork) {
+        compileGwt.execute()
+    }
+}
+
+/* vim: set ai nu nobk expandtab sw=4 ts=4 tw=72 syntax=groovy : */
