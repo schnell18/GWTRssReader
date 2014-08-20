@@ -1,0 +1,25 @@
+# temporary and log files
+*~
+*.swp
+*.swo
+*.log
+logs
+
+# IDE project files
+*.iml
+*.ipr
+*.iws
+.project
+.classpath
+.settings
+bin
+
+# build tool meta directories
+.gradle
+build
+
+# GWT war sub directories
+war/WEB-INF/classes
+war/WEB-INF/lib
+war/WEB-INF/deploy
+war/hello
