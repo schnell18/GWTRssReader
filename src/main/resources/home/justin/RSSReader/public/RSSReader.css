@@ -1,6 +1,6 @@
-.x-viewport {
+/*.x-viewport {
     background-color: #070;
-}
+}*/
 
 #loading {
     position: absolute;
@@ -36,3 +36,6 @@
     font: normal 10px arial, tahoma, sans-serif;
 }
 
+.link-feed {
+  background: url(../gxt/images/icons/feed_link.png) no-repeat center left !important
+}
