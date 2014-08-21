@@ -39,3 +39,12 @@
 .link-feed {
   background: url(../gxt/images/icons/feed_link.png) no-repeat center left !important
 }
+
+.create-feed {
+  background: url(../gxt/images/icons/feed_create.png) no-repeat center left !important
+}
+
+.save-feed {
+  background: url(../gxt/images/icons/disk.png) no-repeat center left !important
+}
+
