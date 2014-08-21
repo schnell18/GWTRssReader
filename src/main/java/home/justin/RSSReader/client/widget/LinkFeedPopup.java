@@ -32,6 +32,10 @@ public class LinkFeedPopup extends Popup {
         super.onRender(target, index);
 
         final TextField<String> tfUrl = new TextField<String>();
+        tfUrl.setAllowBlank(false);
+        tfUrl.setRegex("^http\\://\\w+(\\.\\w+)+/\\S*$");
+        tfUrl.getMessages().setBlankText("URL is required");
+        tfUrl.getMessages().setRegexText("URL is expected, eg: http://www.google.com");
         final Text lblExplain = new Text("Enter a feed URL");
         final Button btnAdd = new Button("Add");
         tfUrl.addKeyListener(new KeyListener() {

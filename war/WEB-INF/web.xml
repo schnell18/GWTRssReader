@@ -3,9 +3,18 @@
  "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
 <web-app>
-	<display-name>RSSReader</display-name>	
-	
-	<welcome-file-list>
-		<welcome-file>index.html</welcome-file>
-	</welcome-file-list>
+    <display-name>RSSReader</display-name>
+
+    <servlet>
+        <servlet-name>FeedServiceImpl</servlet-name>
+        <servlet-class>home.justin.RSSReader.server.service.FeedServiceImpl</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>FeedServiceImpl</servlet-name>
+        <url-pattern>/rssreader/service</url-pattern>
+    </servlet-mapping>
+
+    <welcome-file-list>
+        <welcome-file>index.html</welcome-file>
+    </welcome-file-list>
 </web-app>
