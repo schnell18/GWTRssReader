@@ -1,14 +1,14 @@
 package home.justin.RSSReader.client.widget;
 
-import com.extjs.gxt.ui.client.Registry;
-import com.extjs.gxt.ui.client.Style;
-import com.extjs.gxt.ui.client.event.ButtonEvent;
-import com.extjs.gxt.ui.client.event.SelectionListener;
-import com.extjs.gxt.ui.client.widget.ContentPanel;
-import com.extjs.gxt.ui.client.widget.Info;
-import com.extjs.gxt.ui.client.widget.button.Button;
-import com.extjs.gxt.ui.client.widget.button.ToggleButton;
-import com.extjs.gxt.ui.client.widget.tips.ToolTipConfig;
+import com.sencha.gxt.ui.client.Registry;
+import com.sencha.gxt.ui.client.Style;
+import com.sencha.gxt.ui.client.event.ButtonEvent;
+import com.sencha.gxt.ui.client.event.SelectionListener;
+import com.sencha.gxt.ui.client.widget.ContentPanel;
+import com.sencha.gxt.ui.client.widget.Info;
+import com.sencha.gxt.ui.client.widget.button.Button;
+import com.sencha.gxt.ui.client.widget.button.ToggleButton;
+import com.sencha.gxt.ui.client.widget.tips.ToolTipConfig;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import home.justin.RSSReader.client.Constants;
 import home.justin.RSSReader.client.widget.window.FeedWindow;

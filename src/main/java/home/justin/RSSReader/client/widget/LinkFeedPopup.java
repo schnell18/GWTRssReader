@@ -1,17 +1,17 @@
 package home.justin.RSSReader.client.widget;
 
-import com.extjs.gxt.ui.client.Style;
-import com.extjs.gxt.ui.client.event.ButtonEvent;
-import com.extjs.gxt.ui.client.event.ComponentEvent;
-import com.extjs.gxt.ui.client.event.KeyListener;
-import com.extjs.gxt.ui.client.event.SelectionListener;
-import com.extjs.gxt.ui.client.util.Margins;
-import com.extjs.gxt.ui.client.widget.Popup;
-import com.extjs.gxt.ui.client.widget.Text;
-import com.extjs.gxt.ui.client.widget.button.Button;
-import com.extjs.gxt.ui.client.widget.form.TextField;
-import com.extjs.gxt.ui.client.widget.layout.BorderLayout;
-import com.extjs.gxt.ui.client.widget.layout.BorderLayoutData;
+import com.sencha.gxt.ui.client.Style;
+import com.sencha.gxt.widget.core.client.event.ButtonEvent;
+import com.sencha.gxt.ui.client.event.ComponentEvent;
+import com.sencha.gxt.ui.client.event.KeyListener;
+import com.sencha.gxt.ui.client.event.SelectionListener;
+import com.sencha.gxt.ui.client.util.Margins;
+import com.sencha.gxt.widget.core.client.Popup;
+import com.sencha.gxt.widget.core.client.Text;
+import com.sencha.gxt.widget.core.client.button.IconButton;
+import com.sencha.gxt.widget.core.client.form.TextField;
+import com.sencha.gxt.widget.core.client.container.BorderLayoutContainer;
+import com.sencha.gxt.ui.client.widget.layout.BorderLayoutData;
 import com.google.gwt.event.dom.client.KeyCodes;
 import com.google.gwt.user.client.Element;
 import com.google.gwt.user.client.Window;
@@ -54,7 +54,7 @@ public class LinkFeedPopup extends Popup {
             }
         });
 
-        setLayout(new BorderLayout());
+        setLayout(new BorderLayoutContainer());
 
         BorderLayoutData north = new BorderLayoutData(Style.LayoutRegion.NORTH, 20);
         north.setMargins(new Margins(2));

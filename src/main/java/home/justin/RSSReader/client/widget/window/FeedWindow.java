@@ -1,10 +1,10 @@
 package home.justin.RSSReader.client.widget.window;
 
-import com.extjs.gxt.ui.client.event.ButtonEvent;
-import com.extjs.gxt.ui.client.event.SelectionListener;
-import com.extjs.gxt.ui.client.widget.Window;
-import com.extjs.gxt.ui.client.widget.button.Button;
-import com.extjs.gxt.ui.client.widget.layout.FitLayout;
+import com.sencha.gxt.ui.client.event.ButtonEvent;
+import com.sencha.gxt.ui.client.event.SelectionListener;
+import com.sencha.gxt.ui.client.widget.Window;
+import com.sencha.gxt.ui.client.widget.button.Button;
+import com.sencha.gxt.ui.client.widget.layout.FitLayout;
 import com.google.gwt.user.client.Element;
 import home.justin.RSSReader.client.widget.form.FeedForm;
 import home.justin.RSSReader.shared.model.Feed;

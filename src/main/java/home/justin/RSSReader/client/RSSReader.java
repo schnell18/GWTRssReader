@@ -1,14 +1,14 @@
 package home.justin.RSSReader.client;
 
-import com.extjs.gxt.ui.client.GXT;
-import com.extjs.gxt.ui.client.Registry;
-import com.extjs.gxt.ui.client.Style;
-import com.extjs.gxt.ui.client.util.Margins;
-import com.extjs.gxt.ui.client.util.Theme;
-import com.extjs.gxt.ui.client.widget.Html;
-import com.extjs.gxt.ui.client.widget.Viewport;
-import com.extjs.gxt.ui.client.widget.layout.BorderLayout;
-import com.extjs.gxt.ui.client.widget.layout.BorderLayoutData;
+import com.sencha.gxt.ui.client.GXT;
+import com.sencha.gxt.ui.client.Registry;
+import com.sencha.gxt.ui.client.Style;
+import com.sencha.gxt.ui.client.util.Margins;
+import com.sencha.gxt.ui.client.util.Theme;
+import com.sencha.gxt.ui.client.widget.Html;
+import com.sencha.gxt.ui.client.widget.Viewport;
+import com.sencha.gxt.ui.client.widget.layout.BorderLayout;
+import com.sencha.gxt.ui.client.widget.layout.BorderLayoutData;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.ui.RootPanel;

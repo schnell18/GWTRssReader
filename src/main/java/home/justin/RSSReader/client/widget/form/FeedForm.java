@@ -1,10 +1,10 @@
 package home.justin.RSSReader.client.widget.form;
 
-import com.extjs.gxt.ui.client.Registry;
-import com.extjs.gxt.ui.client.widget.Info;
-import com.extjs.gxt.ui.client.widget.form.FormPanel;
-import com.extjs.gxt.ui.client.widget.form.TextArea;
-import com.extjs.gxt.ui.client.widget.form.TextField;
+import com.sencha.gxt.ui.client.Registry;
+import com.sencha.gxt.ui.client.widget.Info;
+import com.sencha.gxt.ui.client.widget.form.FormPanel;
+import com.sencha.gxt.ui.client.widget.form.TextArea;
+import com.sencha.gxt.ui.client.widget.form.TextField;
 import com.google.gwt.user.client.Element;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import home.justin.RSSReader.client.Constants;

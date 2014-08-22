@@ -22,13 +22,13 @@ dependencies {
 
     testCompile 'junit:junit:4.9'
 
-    providedCompile 'com.google.gwt:gwt-dev:2.2.0'
-    providedCompile 'com.google.gwt:gwt-user:2.2.0'
+    providedCompile 'com.google.gwt:gwt-dev:2.6.1'
+    providedCompile 'com.google.gwt:gwt-user:2.6.1'
     providedCompile 'javax.servlet:servlet-api:2.4'
 
-    runtime 'com.google.gwt:gwt-servlet:2.2.0'
+    runtime 'com.google.gwt:gwt-servlet:2.6.1'
 
-    compile 'com.extjs:gxt:2.3.1-gwt22'
+    compile 'com.sencha.gxt:gxt:3.1.1'
 }
 
 task compileGwt (dependsOn: classes, type: JavaExec) {
