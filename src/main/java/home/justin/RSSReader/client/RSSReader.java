@@ -3,6 +3,8 @@ package home.justin.RSSReader.client;
 import com.extjs.gxt.ui.client.GXT;
 import com.extjs.gxt.ui.client.Registry;
 import com.extjs.gxt.ui.client.Style;
+import com.extjs.gxt.ui.client.data.BeanModel;
+import com.extjs.gxt.ui.client.store.ListStore;
 import com.extjs.gxt.ui.client.util.Margins;
 import com.extjs.gxt.ui.client.util.Theme;
 import com.extjs.gxt.ui.client.widget.Html;
@@ -53,10 +55,15 @@ public class RSSReader implements EntryPoint {
         viewport.setLayout(borderLayout);
         RootPanel.get().add(viewport);
 
-        registerService();
+        registerServices();
+        registerStores();
     }
 
-    private void registerService() {
+    private void registerServices() {
         Registry.register(Constants.FEED_SERVICE, GWT.create(FeedService.class));
+    }
+
+    private void registerStores() {
+        Registry.register(Constants.FEED_STORE, new ListStore<BeanModel>());
     }
 }

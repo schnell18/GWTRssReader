@@ -1,8 +1,10 @@
 package home.justin.RSSReader.shared.model;
 
+import com.extjs.gxt.ui.client.data.BeanModelTag;
+
 import java.io.Serializable;
 
-public class Feed implements Serializable {
+public class Feed implements Serializable, BeanModelTag {
     private String description;
     private String link;
     private String title;
