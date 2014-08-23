@@ -1,6 +1,10 @@
 package home.justin.RSSReader.client.widget.form;
 
 import com.extjs.gxt.ui.client.Registry;
+import com.extjs.gxt.ui.client.data.BeanModel;
+import com.extjs.gxt.ui.client.data.BeanModelFactory;
+import com.extjs.gxt.ui.client.data.BeanModelLookup;
+import com.extjs.gxt.ui.client.store.ListStore;
 import com.extjs.gxt.ui.client.widget.Info;
 import com.extjs.gxt.ui.client.widget.form.FormPanel;
 import com.extjs.gxt.ui.client.widget.form.TextArea;
@@ -10,7 +14,6 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 import home.justin.RSSReader.client.Constants;
 import home.justin.RSSReader.shared.model.Feed;
 import home.justin.RSSReader.shared.service.FeedServiceAsync;
-
 
 
 public class FeedForm extends FormPanel {
@@ -62,6 +65,10 @@ public class FeedForm extends FormPanel {
             @Override
             public void onSuccess(Void result) {
                 Info.display("RSS Reader", "Feed " + feed.getTitle() + " saved!");
+                ListStore<BeanModel> store = Registry.get(Constants.FEED_STORE);
+                BeanModelFactory factory = BeanModelLookup.get().getFactory(feed.getClass());
+                store.add(factory.createModel(feed));
+                store.setFiresEvents(true);
             }
         });
     }

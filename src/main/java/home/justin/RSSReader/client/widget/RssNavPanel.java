@@ -8,9 +8,11 @@ import com.extjs.gxt.ui.client.widget.ContentPanel;
 import com.extjs.gxt.ui.client.widget.Info;
 import com.extjs.gxt.ui.client.widget.button.Button;
 import com.extjs.gxt.ui.client.widget.button.ToggleButton;
+import com.extjs.gxt.ui.client.widget.layout.FitLayout;
 import com.extjs.gxt.ui.client.widget.tips.ToolTipConfig;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import home.justin.RSSReader.client.Constants;
+import home.justin.RSSReader.client.widget.list.FeedList;
 import home.justin.RSSReader.client.widget.window.FeedWindow;
 import home.justin.RSSReader.shared.model.Feed;
 import home.justin.RSSReader.shared.service.FeedServiceAsync;
@@ -57,6 +59,8 @@ public class RssNavPanel extends ContentPanel {
         });
 
         setHeadingText("Navigation");
+        setLayout(new FitLayout());
+        add(new FeedList());
         setButtonAlign(Style.HorizontalAlignment.LEFT);
         addButton(btnCreate);
         addButton(btnLink);
