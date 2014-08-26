@@ -58,7 +58,7 @@ public class RssNavPanel extends ContentPanel {
             }
         });
 
-        setHeadingText("Navigation");
+        setHeading("Navigation");
         setLayout(new FitLayout());
         add(new FeedList());
         setButtonAlign(Style.HorizontalAlignment.LEFT);

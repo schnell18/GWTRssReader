@@ -15,7 +15,7 @@ public class FeedWindow extends Window {
 
     public FeedWindow(final Feed feed) {
 
-        setHeadingText("Feed");
+        setHeading("Feed");
         setWidth(400);
         setHeight(250);
         setResizable(false);
