@@ -2,6 +2,7 @@ apply plugin: 'eclipse'
 apply plugin: 'idea'
 apply plugin: 'war'
 
+ext.releaseMode = false;
 buildscript {
     repositories {
         jcenter()
@@ -31,12 +32,39 @@ dependencies {
     compile 'com.extjs:gxt:2.3.1-gwt22'
 }
 
-task compileGwt (dependsOn: classes, type: JavaExec) {
+task devMode (dependsOn: classes, type: JavaExec) {
+
+    // prevent devMode from running
+    // if no gwt module source is changed
+    inputs.source sourceSets.main.java.srcDirs
+    inputs.dir sourceSets.main.output.resourcesDir
+
+    main = 'com.google.gwt.dev.DevMode'
+    jvmArgs = ['-Xmx512M', '-Xss16M']
+
+    classpath {
+        [
+            sourceSets.main.java.srcDirs,           // Java source
+            sourceSets.main.output.resourcesDir,    // Generated resources
+            sourceSets.main.output.classesDir,      // Generated classes
+            sourceSets.main.compileClasspath,       // Deps
+        ]
+    }
+
+    args = [
+        '-logLevel', 'INFO',
+        '-port', '8080',
+        'home.justin.RSSReader.RSSReaderChrome',
+    ]
+
+}
+
+task compileGwtRel (dependsOn: classes, type: JavaExec) {
 
     // prevent gwtc from running
     // if no gwt module source is changed
     inputs.source sourceSets.main.java.srcDirs
-	inputs.dir sourceSets.main.output.resourcesDir
+    inputs.dir sourceSets.main.output.resourcesDir
 
     main = 'com.google.gwt.dev.Compiler'
     jvmArgs = ['-Xmx512M', '-Xss16M']
@@ -47,9 +75,9 @@ task compileGwt (dependsOn: classes, type: JavaExec) {
             sourceSets.main.output.resourcesDir,    // Generated resources
             sourceSets.main.output.classesDir,      // Generated classes
             sourceSets.main.compileClasspath,       // Deps
-        ]   
+        ]
     }
-     
+
     args = [
         'home.justin.RSSReader.RSSReader',
         //'-war', "${buildDir}/war",
@@ -61,7 +89,49 @@ task compileGwt (dependsOn: classes, type: JavaExec) {
 
 }
 
-war.dependsOn compileGwt
+task compileGwtDev (dependsOn: classes, type: JavaExec) {
+
+    // prevent gwtc from running
+    // if no gwt module source is changed
+    inputs.source sourceSets.main.java.srcDirs
+    inputs.dir sourceSets.main.output.resourcesDir
+
+    main = 'com.google.gwt.dev.Compiler'
+    jvmArgs = ['-Xmx512M', '-Xss16M']
+
+    classpath {
+        [
+            sourceSets.main.java.srcDirs,           // Java source
+            sourceSets.main.output.resourcesDir,    // Generated resources
+            sourceSets.main.output.classesDir,      // Generated classes
+            sourceSets.main.compileClasspath,       // Deps
+        ]
+    }
+
+    args = [
+        'home.justin.RSSReader.RSSReaderChrome',
+        //'-war', "${buildDir}/war",
+        '-logLevel', 'INFO',
+        '-localWorkers', '2',
+        //'-extra', extraDir,
+        // '-draftCompile' // Speeds up compile with 25%
+    ]
+
+}
+
+task compileGwt << {
+    println "releaseMode = ${releaseMode}"
+    if (releaseMode) {
+        compileGwtRel.execute()
+    }
+    else {
+        compileGwtDev.execute()
+    }
+}
+
+task release (dependsOn: assemble) {
+}
+
 war {
     webAppDirName = 'war'
     baseName = 'rssreader'
@@ -76,7 +146,6 @@ war {
 
 }
 
-
 task wrapper(type: Wrapper) {
     gradleVersion = '2.0'
 }
@@ -90,6 +159,12 @@ gretty {
 gradle.taskGraph.afterTask { task ->
     if (task.name == 'compileJava' && task.didWork) {
         compileGwt.execute()
+    }
+}
+
+gradle.taskGraph.whenReady { taskGraph ->
+    if (taskGraph.hasTask(release)) {
+        releaseMode = true;
     }
 }
 
